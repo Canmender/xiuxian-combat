@@ -65,6 +65,25 @@ public class XiuXianCombat extends JavaPlugin implements CommandExecutor, Listen
             }
         }, 20L, 20L);
         
+        // HP action bar display (every 1 second)
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                CombatData data = combatDataCache.get(p.getUniqueId());
+                if (data != null) {
+                    double realHp = p.getHealth();
+                    int displayHp = (int) Math.min(realHp, data.maxHp);
+                    int maxHp = (int) data.maxHp;
+                    int percent = (int)(displayHp * 100.0 / maxHp);
+                    String msg = getConfig().getString("hp-actionbar-format",
+                        '&' + "c" + '&' + "lHP " + '&' + "f{hp} " + '&' + "7/ " + '&' + "f{max_hp} (" + '&' + "e{percent}%" + '&' + "7)");
+                    msg = msg.replace("{hp}", String.valueOf(displayHp))
+                             .replace("{max_hp}", String.valueOf(maxHp))
+                             .replace("{percent}", String.valueOf(percent));
+                    p.sendActionBar(ChatColor.translateAlternateColorCodes('&', msg));
+                }
+            }
+        }, 20L, 20L);
+        
         getLogger().info("XiuXianCombat enabled");
     }
     
@@ -153,9 +172,9 @@ public class XiuXianCombat extends JavaPlugin implements CommandExecutor, Listen
         AttributeInstance healthAttr = p.getAttribute(Attribute.MAX_HEALTH);
         if (healthAttr != null) {
             double currentHp = p.getHealth();
-            applyModifier(p, Attribute.MAX_HEALTH, MODIFIER_HP, Math.min(1004, data.maxHp - 20));
+            applyModifier(p, Attribute.MAX_HEALTH, MODIFIER_HP, data.maxHp - 20);
             // 回满血
-            if (currentHp < data.maxHp) p.setHealth(data.maxHp);
+            if (currentHp < Math.min(1024, data.maxHp)) p.setHealth(Math.min(1024, data.maxHp));
         }
         
         // 应用攻速
