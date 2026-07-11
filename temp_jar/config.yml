@@ -1,0 +1,96 @@
+﻿# XiuXianCombat Configuration - 完整RPG数值体系
+
+# ===== Data Source =====
+xiuxian-data-dir: "../XiuXianCore/data"
+
+# ===== HP系统（指数增长） =====
+hp-base: 20
+hp-per-level: 10
+hp-realm-power: 2.5
+lianti-hp-multiplier: 1.3
+xiufa-hp-multiplier: 0.88
+
+# ===== 真元系统（指数增长） =====
+mana-per-level: 30
+mana-recovery: 0.5
+mana-chong-bonus: 2000
+mana-realm-bonus: 20000
+mana-realm-power: 2.5
+lianti-mana-multiplier: 0.7
+xiufa-mana-multiplier: 1.3
+
+# ===== 物理伤害系统（指数增长） =====
+physical-base-damage-per-level: 2.0
+physical-damage-realm-power: 2.0
+physical-crit-rate-per-level: 0.15
+physical-crit-multi-per-level: 0.002
+physical-penetration-per-level: 0.12
+physical-penetration-realm-power: 1.5
+physical-block-per-realm: 15.0
+max-physical-crit-rate: 75.0
+max-physical-penetration: 80.0
+max-physical-block: 65.0
+physical-block-damage-reduction: 0.5
+
+# ===== 法术伤害系统（指数增长） =====
+magical-base-damage-per-level: 2.0
+magical-damage-realm-power: 2.0
+magical-crit-rate-per-level: 0.15
+magical-crit-multi-per-level: 0.002
+magical-penetration-per-level: 0.12
+magical-penetration-realm-power: 1.5
+magical-block-per-realm: 15.0
+max-magical-crit-rate: 75.0
+max-magical-penetration: 80.0
+max-magical-block: 65.0
+magical-block-damage-reduction: 0.5
+
+# ===== 防御属性（指数增长） =====
+physical-defense-per-level: 1.5
+physical-defense-realm-power: 2.0
+magical-defense-per-level: 1.5
+magical-defense-realm-power: 2.0
+max-physical-defense: 50000.0
+max-magical-defense: 50000.0
+
+# ===== 会心抵抗/抗性（每大境界） =====
+crit-resistance-per-realm: 12.0
+crit-tenacity-per-realm: 10.0
+max-crit-resistance: 70.0
+max-crit-tenacity: 50.0
+
+# ===== 双修类型加成 =====
+lianti-physical-damage-multiplier: 1.3
+lianti-physical-crit-rate-multiplier: 1.2
+lianti-physical-penetration-multiplier: 1.3
+lianti-physical-block-multiplier: 1.3
+lianti-magical-damage-multiplier: 0.5
+lianti-magical-defense-multiplier: 0.6
+
+xiufa-magical-damage-multiplier: 1.3
+xiufa-magical-crit-rate-multiplier: 1.2
+xiufa-magical-penetration-multiplier: 1.3
+xiufa-magical-block-multiplier: 1.3
+xiufa-physical-damage-multiplier: 0.5
+xiufa-physical-defense-multiplier: 0.6
+
+# ===== 境界倍率 =====
+realm-multiplier-enabled: true
+
+# ===== 攻速 =====
+attack-speed-per-level: 0.003
+max-attack-speed: 4.0
+
+# ===== 战斗日志 =====
+show-combat-log: true
+crit-message: "&6&l【会心】&7造成 &c&l{damage} &7伤害"
+physical-block-message: "&a&l【物挡】&7格挡了物理攻击"
+magical-block-message: "&9&l【法挡】&7格挡了法术攻击"
+physical-penetration-message: "&c&l【物穿】&7无视了 &f{amount}% &7物理防御"
+magical-penetration-message: "&9&l【法穿】&7无视了 &f{amount}% &7法术防御"
+
+# ===== 显示名称 =====
+combat-stats-title: "&6&l━━ 战斗属性 ━━"
+
+# HP Action Bar format ({hp} {max_hp} {percent})
+hp-actionbar-format: '&c&lHP &f{hp} &7/ &f{max_hp} (&e{percent}%&7)'
